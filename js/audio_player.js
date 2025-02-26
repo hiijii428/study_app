@@ -36,22 +36,10 @@ html_set().then(function(){
     file_input = document.getElementById('audio_player_file');//ファイル選択
     volume_input = document.getElementById("audio_player_volume_input");
     music_list=[
-        {"title":"music/1栄光の架橋.wav", "src":"music/1栄光の架橋.wav"},
-        {"title":"music/2送る詩.wav", "src":"music/2送る詩.wav"},
-        {"title":"music/3なにもない.wav", "src":"music/3なにもない.wav"},
-        {"title":"music/4〜風まかせ〜.wav", "src":"music/4〜風まかせ〜.wav"},
-        {"title":"music/5公園.wav", "src":"music/5公園.wav"},
-        {"title":"music/6月曜日の週末.wav", "src":"music/6月曜日の週末.wav"},
-        {"title":"music/7サヨナラバス.wav", "src":"music/7サヨナラバス.wav"},
-        {"title":"music/8嗚呼、青春の日々.wav", "src":"music/8嗚呼、青春の日々.wav"},
-        {"title":"music/9雨のち晴レルヤ.wav","src":"music/9雨のち晴レルヤ.wav"},
-        {"title":"music/10シシカバブー.wav", "src":"music/10シシカバブー.wav"},
-        {"title":"music/11虹.wav", "src":"music/11虹.wav"},
-        {"title":"music/12夏色.wav", "src":"music/12夏色.wav"},
-        {"title":"music/13二人三脚.wav", "src":"music/13二人三脚.wav"},
-        {"title":"music/14終わらない歌.wav", "src":"music/14終わらない歌.wav"},
-        {"title":"music/15少年.wav", "src":"music/15少年.wav"},
-        {"title":"music/16Hey 和.wav", "src":"music/16Hey 和.wav"}
+        {"title":"音楽1.mp3", "src":"music/音楽1.mp3"},
+        {"title":"音楽2.mp3", "src":"music/音楽2.mp3"},
+        {"title":"音楽3.mp3", "src":"music/音楽3.mp3"},
+        {"title":"音楽4.mp3", "src":"music/音楽4.mp3"}
     ]
 }).then(function(){
     return_button.addEventListener('click', returnAudio, false );

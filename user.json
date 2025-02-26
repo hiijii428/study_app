@@ -1,1 +1,1 @@
-{"user":{"name":"admin","tasklist":{"todo":["ログイン機能を追加する"],"working":null,"done":null}}}
+{"user":{"name":"admin","tasklist":{"todo":["タスク１","タスク2"],"working":["実行中1","実行中2","実行中3"],"done":["完了1"]}}}
