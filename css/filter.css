@@ -1,0 +1,38 @@
+.content{
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    border: #aaa 1px solid;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: top;
+    animation-duration: 1s;
+}
+.tag span{
+    border: 1px #aaa solid;
+    border-radius: 3px;
+    margin: 2px;
+    padding: 3px;
+}.content img{
+    width: 150px;
+    display: block;
+    margin-inline: auto;
+}
+.tag_button {
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+    color: black;
+    width: fit-content;
+    padding-inline: 5px;
+    margin: 0 5px 10px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    cursor: pointer;
+}.tag_button::before{
+    content:"🏷";
+}
+.actv {
+background:#E40;
+border-color: #E40;
+}

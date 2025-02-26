@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>数学 | 目で見る教科書</title>
+        <link rel="stylesheet" href="./css/main_style.css">
+        <link rel="stylesheet" href="./css/hamburger.css">
+        <link rel="stylesheet" href="./css/audio_player.css">
+        <link rel="stylesheet" href="./css/todo.css">
+        <meta charset="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    </head>
+    <body>
+        <h1 class="title_h1">数学　目で見る教科書</h1>
+
+        <div class="nav">
+            <input type="checkbox" id="nav_input" class="drawer_hidden">
+            <label for="nav_input" class="drawer_open" style="top: 110px;">nav</label>
+            <div class="nav_div">
+                <h3>メニュー</h3>
+                <a href="./main.html" class="menu_link">トップ</a>
+            </div>
+        </div>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_hirei()">
+            <h2>比例グラフ</h2>
+            <img src="image/hirei.png" alt="比例グラフ画像" class="title_img">
+            <p>グラフを動かすことによって比例の性質を知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_hanhirei()">
+            <h2>反比例グラフ</h2>
+            <img src="image/hanhirei.png" alt="反比例グラフ画像" class="title_img">
+            <p>グラフを動かすことによって反比例の性質を知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_tousa()">
+            <h2>等差数列</h2>
+            <img src="./image/tousa.png" alt="等差数列グラフ画像" class="title_img">
+            <p>初項や公差を変えることによって等差数列の特徴などを知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_touhi()">
+            <h2>等比数列</h2>
+            <img src="./image/touhi.png" alt="等比数列グラフ画像" class="title_img">
+            <p>初項や公差を変えることによって等比数列の特徴などを知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_fibonacci()">
+            <h2>フィボナッチ数列</h2>
+            <img src="./image/fibonacci.png" alt="フィボナッチ数列画像" class="title_img">
+            <p>初項や公差を変えることによってフィボナッチ数列の特徴などを知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_aliquot()">
+            <h2>アリコット数列</h2>
+            <img src="./image/aliquot.png" alt="アリコット数列画像" class="title_img">
+            <p>初項や公差を変えることによってアリコット数列の特徴などを知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_collats()">
+            <h2>コラッツの問題(コラッツ予想)</h2>
+            <img src="./image/collats.png" alt="コラッツの問題画像" class="title_img">
+            <p>簡単だけど未解決問題のコラッツの問題の特徴などを知ることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_pai()">
+            <h2>ぱいこね変換</h2>
+            <!-- <img src="./image/pi.png" alt="ぱいこね変換画像" class="title_img"> -->
+            <p>ぱいこね変換を通してカオスの不思議を見つけることができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_trigonometric_circle()">
+            <h2>三角関数　応用</h2>
+            <!-- <img src="./image/pi.png" alt="ぱいこね変換画像" class="title_img"> -->
+            <p>三角関数を使用して円周上の点の位置を計算し、描画ことができます</p>
+        </label>
+
+        <script type="text/javascript" src="./js/main_script.js"></script>
+        <script type="text/javascript" src="./js/audio_player.js"></script>
+        <script type="text/javascript" src="./js/math_display.js"></script>
+        <script type="text/javascript" src="./js/math.js"></script>
+        <script type="text/javascript" src="./js/todo.js"></script>
+    </body>
+</html>
