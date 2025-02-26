@@ -1,0 +1,71 @@
+.time{
+    margin: 10px;
+    font-weight: bold;
+}
+input{cursor: pointer;}
+.audio_player_button{
+    background-color: greenyellow;
+    border:none;
+    margin-inline: auto;
+    cursor: pointer;
+}.audio_player_button:hover{
+    background-color: #5b3;
+}.audio_player_button:active{
+    background-color: #34d100;
+}
+#audio_player_file {
+    border: red 1px solid;
+    padding-block: 50px;
+    margin: 10px;
+}
+.music_table ul{
+    margin:10px;
+    padding: 5px;
+}
+.music_table li{
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+}
+.music_list_content{
+    padding-inline: 8px;
+    padding-block: 3px;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    background-color: #fff;
+}.music_list_content:hover{
+    background-color: lightblue;
+}.music_list_content:active{
+    background-color: #00bfff;
+}
+.music_table{
+    margin-inline: auto;
+    margin-block: 10px;;
+    width: 90%;
+    height: 200px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    overflow-y: scroll;
+    background-color: #ff944d;
+}
+.player{
+    z-index: 10001;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid #aaa;
+    background-color: lightblue;
+}
+.file_select{
+    padding-block: 20%;
+    margin-block: 10px;;
+    border: orange 3px dotted;
+    position: relative;
+    width: fit-content;
+}.file_select::file-selector-button{
+    font-weight: bold;
+    background-color: lightgreen;
+    border: 1px solid #5f8;
+    border-radius: 5px;
+    text-align: center;
+}

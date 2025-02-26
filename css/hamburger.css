@@ -1,0 +1,65 @@
+.drawer_hidden {display: none;}
+.drawer_open {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    border: 1px #aaa solid;
+    border-radius: 10px;
+    background-color: #ddd;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.player{ /*main div*/
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    transition: .5s;
+}label[for="audio_player_drawer_input"]{
+    display: flex;
+    top:30px;
+    right: 30px;
+}#audio_player_drawer_input:checked ~ .player {
+    left: 70%;
+}
+
+.task_list{
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 100%;
+    transition: .5s;
+    width: 30%;
+    height: 100%;
+    border: 1px solid #aaa;
+    background-color: lightblue;
+}label[for=task_list_drawer_input]{
+    top:70px;
+    right: 30px;
+}#task_list_drawer_input:checked ~ .task_list {
+    top: 0px;
+    left: 70%;
+}
+
+.nav_div{
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 100%;
+    transition: .5s;
+    width: 30%;
+    height: 100%;
+    border: 1px solid #aaa;
+    background-color: orange;
+    padding-left:15px;
+}label[for=nav_input]{
+    top:110px;
+    right: 30px;
+}#nav_input:checked ~ .nav_div {
+    top: 0px;
+    left: 70%;
+}

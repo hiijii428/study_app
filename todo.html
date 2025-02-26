@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title> todo</title>
+        <link rel="stylesheet" href="./css/main_style.css">
+        <link rel="stylesheet" href="./css/hamburger.css">
+        <link rel="stylesheet" href="./css/audio_player.css">
+        <link rel="stylesheet" href="./css/todo.css">
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="./js/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="./js/todo/hammer.min.js"></script>
+        <script type="text/javascript" src="./js/todo/web-animations.min.js"></script>
+        <script type="text/javascript" src="./js/todo/muuri.min.js"></script>
+    </head>
+    <body>
+        <h1>todo</h1>
+        <div id="audio_player"></div>
+        <div id="task_list"></div>
+
+        <fieldset>
+            <legend><span style="font-weight: bold;">タスクリスト　</span><button class="task_plus" id="task_plus">+</button></legend>
+            <div class="drag-container"></div>
+            <div class="board">
+                <div class="board-column todo">
+                    <div class="board-column-container">
+                    <div class="board-column-header">やること</div>
+                        <div class="board-column-content-wrapper">
+                            <div class="board-column-content" id="todo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column working">
+                    <div class="board-column-container">
+                        <div class="board-column-header">処理中...</div>
+                        <div class="board-column-content-wrapper">
+                            <div class="board-column-content" id="working">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="board-column done">
+                    <div class="board-column-container">
+                    <div class="board-column-header">完了！<button onclick="document.getElementById('done').innerHTML='';" title="｢完了！｣の内容をすべて削除する">完了を削除</button></div>
+                    <div class="board-column-content-wrapper">
+                        <div class="board-column-content" id="done">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <input type="button" value="変更を保存" class="page_button" id="change_save_button" style="margin-top: 80px;"/>
+        <p style="text-align: center;">変更をした場合は、再読込みをするとメニューバーに反映されます。再読込をしても反映されない場合は、ブラウザのキャッシュを削除してください。</p>
+
+        <script>
+            let user_data;
+            fetch('./user.json').then(response => response.json()).then(data => {
+                user_data = data["user"];
+                let data_label_list = ["todo","working","done"]
+                for(let l=0;l<3;l++){
+                    let label = data_label_list[l];
+                    let list = user_data["tasklist"][label];
+                    try{
+                        for(let i=0;i<list.length;i++){
+                            document.getElementById(label).innerHTML += '<div class="board-item task_content"><div class="board-item-content">'+list[i]+'</div></div>'
+                        }
+                    }catch(e){
+                            if(e=="TypeError: list is null"){console.log(label,"list  null")}else{console.log("error!! ",e)}
+                    }
+                }
+            })
+
+            var grid;
+            function muuri_script(){
+                var dragContainer = document.querySelector('.drag-container');
+                var itemContainers = [].slice.call(document.querySelectorAll('.board-column-content'));
+                var columnGrids = [];
+                var boardGrid;
+                // Init the column grids so we can drag those items around.
+                itemContainers.forEach(function (container) {
+                    grid = new Muuri(container, {
+                        items: '.board-item',
+                        dragEnabled: true,
+                        dragSort: function () {
+                            return columnGrids;
+                        },
+                        dragContainer: dragContainer,
+                        dragAutoScroll: {
+                            targets: (item) => {
+                                return [
+                                    { element: window, priority: 0 },
+                                    { element: item.getGrid().getElement().parentNode, priority: 1 },
+                                ];
+                            }
+                        },
+                    })
+                    .on('dragInit', function (item) {
+                        item.getElement().style.width = item.getWidth() + 'px';
+                        item.getElement().style.height = item.getHeight() + 'px';
+                    })
+                    .on('dragReleaseEnd', function (item) {
+                        item.getElement().style.width = '';
+                        item.getElement().style.height = '';
+                        item.getGrid().refreshItems([item]);
+                    })
+                    .on('layoutStart', function () {
+                        boardGrid.refreshItems().layout();
+                    });
+                    columnGrids.push(grid);
+                });
+                // Init board grid so we can drag those columns around.
+                boardGrid = new Muuri('.board', {
+                    dragEnabled: true,
+                    dragHandle: '.board-column-header'
+                });
+            }
+
+            document.getElementById("task_plus").addEventListener("click" ,function(){
+                let str = prompt("タスクリストに追加したいタスク名を入力してください");
+                if(str){
+                    let item = document.createElement('div');
+                    item.innerHTML = '<div class="board-item task_content"><div class="board-item-content">'+str+'</div></div>';
+                    item = item.firstChild;
+                    grid.add(item, {index: 0});
+                }
+            });
+
+            document.getElementById("change_save_button").addEventListener("click",function(){
+                console.log("change");
+                let data_label_list = ["todo","working","done"]/*ラベル*/
+                let save_task_list = {"name":"","todo":[],"working":[],"done":[]};/*jsonに渡す*/
+
+                for(let l=0;l<3;l++){/*todo working done を順番に処理*/
+                    let task_content_list = [];/*save_task_listに渡す*/
+                    let task_content_dict = [];/*task_content_listに渡す*/
+                    let label = data_label_list[l];
+                    let task_content = document.getElementById(label).getElementsByClassName("task_content")
+                    console.log(label);
+
+                    for(let c=0;c<task_content.length;c++){/*contentを抜き出す*/
+                        let task_transform = Number(task_content[c].style.transform.replace("translateX(0px) translateY(","").replace("px)",""));/*要素の高さを取り出す*/
+                        let task_text = task_content[c].innerText;
+                        task_content_dict.push({"transform":task_transform ,"text":task_text});/*transformを入れないと昇順(上から順似できない為入れる)*/
+                    }
+
+                    task_content_dict.sort(function(a, b) {/*昇順に並べ替える*/
+                        if (a.transform > b.transform) {return 1;}
+                        else {return -1;}
+                    })
+
+                    for(let c=0;c<task_content_dict.length;c++){/*textのみを抜き出す*/
+                        task_content_list.push(task_content_dict[c].text)
+                    }
+
+                    console.log(task_content_list);
+                    save_task_list[label] = task_content_list;
+                }
+                save_task_list["name"]=user_data["name"];
+                console.log(save_task_list);
+                console.log(user_data["name"],"さんのタスクデータを保存")
+                $.post( './todo_save.php', save_task_list )
+
+            });
+
+            setTimeout(muuri_script,2000);//同期処理っぽくする
+        </script>
+        <script type="text/javascript" src="./js/todo.js"></script>
+        <script type="text/javascript" src="./js/main_script.js"></script>
+        <script type="text/javascript" src="./js/audio_player.js"></script>
+    </body>
+</html>
+<!--
+https://qiita.com/hayaharu3220/items/1569d466db5f61fd5e8a#%E4%B8%A6%E3%81%B3%E6%9B%BF%E3%81%88%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E8%A1%A8%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%9F%E3%81%84listjs
+https://codepen.io/haruharu3220/pen/eYQJLvj
+https://muuri.dev/
+
+
+https://blog.ver001.com/javascript-dragdrop-sort/
+-->

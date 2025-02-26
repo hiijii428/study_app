@@ -1,0 +1,68 @@
+.drag-container {
+    position: fixed;
+}
+.board {
+    position: relative;
+    width:100%;
+    border-radius: 10px;
+    margin:0 auto;
+}
+.board-column {
+    position: absolute;
+    background-color: #fff8;
+    border-radius: 10px;
+    height: 250px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    /*スクロールバー非表示*/
+    /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+    -ms-overflow-style: none;
+    /*Firefoxへの対応*/
+    scrollbar-width: none;
+} /*Google Chrome、Safariへの対応*/
+.board-column::-webkit-scrollbar{
+display: none;
+}
+.board-column-container{
+    z-index:0;
+    width:30vw;
+}
+.board-column-header{
+    background-color: #5f5;
+    padding: 3px;
+    border-radius: 5px;
+    width: 90%;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.board-column-content {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    padding:10px; /*これがないと要素がなくなったときに新たな要素が入らない.*/
+}
+.board-item {
+    position: absolute;
+    background-color: #fff;
+    border: 3px solid #ff0;
+    border-radius: 5px;
+    width: 80%;
+    padding:5px;
+    margin:8px 3px;
+    cursor: pointer;
+}
+.drag-container {
+    position: fixed;
+    z-index: 1000;
+}
+.task_plus{
+    background: none;
+    border: none;
+    color:#00b900;
+    padding: 0px;
+    font-size: 1.5em;
+    font-weight: bold;
+}.task_plus:hover{
+    color: #007e00;
+}
