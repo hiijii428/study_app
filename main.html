@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>国語</title>
+        <title>トップ | 目で見る教科書</title>
         <link rel="stylesheet" href="./css/main_style.css">
         <link rel="stylesheet" href="./css/hamburger.css">
         <link rel="stylesheet" href="./css/audio_player.css">
         <link rel="stylesheet" href="./css/todo.css">
-        <link rel="stylesheet" href="./css/japanese.css">
         <meta charset="UTF-8">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     </head>
     <body>
+        <h1 class="title_h1">トップ　目で見る教科書</h1>
+        <div id="side_var"></div>
 
-        <input id="japanese_drawer_input" type="checkbox" class="drawer_hidden">
-        <label for="japanese_drawer_input" class="div_content" onclick="display_in_bunsetu()">
-            <h2>文節</h2>
-            <p></p>
-        </label>
-
+        <a href="./japanese.html" class="div_content"><div><h2>国語</h2></div></a>
+        <a href="./math.html" class="div_content"><div><h2>数学</h2></div></a>
+        <a href="./society.html" class="div_content"><div><h2>社会</h2></div></a>
         <script type="text/javascript" src="./js/main_script.js"></script>
         <script type="text/javascript" src="./js/audio_player.js"></script>
-        <script type="text/javascript" src="./js/japanese.js"></script>
         <script type="text/javascript" src="./js/todo.js"></script>
     </body>
 </html>
