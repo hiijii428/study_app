@@ -15,15 +15,13 @@
     width: 50%;
     transition: .5s;
 }
- .menu_link:hover{
+.menu_link:hover{
     transition: .5s;
     background-color: #09f;
     transform: translateX(15px);
-} 
-   
-
+}
 mark{
-    background: linear-gradient(transparent 40%, #ff0 80%);
+    background: linear-gradient(transparent 40%, #7f0 80%);
 }
 .div_content{
     width: 30%;
