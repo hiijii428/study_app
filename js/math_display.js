@@ -11,7 +11,7 @@ function display_in_hirei(){
             <h2>比例グラフ</h2>
             <p>グラフを動かすことによって比例の性質を知ることができます。</p>
             <div class="side_parent">
-                <div class="side_content" style="max-width: 450px; max-height: 225px;">
+                <div class="side_content" style="">
                     <canvas id="hireiChart" style="background-color: #fff;"></canvas>
                 </div>
                 <div class="side_content">
@@ -33,7 +33,7 @@ function display_in_hanhirei(){
             <h2>反比例グラフ</h2>
             <p>グラフを動かすことによって反比例の性質を知ることができます。</p>
             <div class="side_parent">
-                <div class="side_content" style="max-width: 450px; max-height: 225px;">
+                <div class="side_content" style="">
                     <canvas id="hannhireiChart"></canvas>
                 </div>
                 <div class="side_content">
@@ -54,7 +54,7 @@ function display_in_tousa(){
         <button class="return_button" onclick='display_return()'>戻る</button>
         <h2>等差数列</h2>
         <div class="side_parent">
-            <div class="side_content" style="max-width: 450px; max-height: 225px;">
+            <div class="side_content" style="">
                     <canvas id="tousaChart" style="background-color: #fff;"></canvas>
                     <div id="add"></div>
                     初項の値：<input type="number" min="2" max="50" value="10" id="add_number0" oninput="tousa()"><br>
@@ -77,7 +77,7 @@ function display_in_touhi(){
         <button class="return_button" onclick='display_return()'>戻る</button>
         <h2>等比数列</h2>
         <div class="side_parent">
-            <div class="side_content" style="max-width: 450px; max-height: 225px;">
+            <div class="side_content" style="">
                     <canvas id="touhiChart" style="background-color: #fff;"></canvas>
                     <div id="put"></div>
                     初項の値：<input type="number" min="2" max="50" value="2" id="put_number0" oninput="touhi()"><br>
@@ -100,7 +100,7 @@ function display_in_fibonacci(){
         <button class="return_button" onclick='display_return()'>戻る</button>
         <h2>フィボナッチ数列</h2>
         <div class="side_parent">
-            <div class="side_content" style="max-width: 450px; max-height: 225px;">
+            <div class="side_content" style="">
                     <canvas id="fibonacciChart" style="background-color: #fff;"></canvas>
                     <div id="fibonacci_list"></div>
                     <label for="fibonacci_type">数列の種類:</label>
@@ -136,7 +136,7 @@ function display_in_aliquot(){
         <button class="return_button" onclick='display_return()'>戻る</button>
         <h2>アリコット数列</h2>
         <div class="side_parent">
-            <div class="side_content" style="max-width: 450px; max-height: 225px;">
+            <div class="side_content" style="">
                     <canvas id="aliquotChart" style="background-color: #fff;"></canvas>
                     <div id="aliquot_list"></div>
                     初項の値：<input type="number" min="2" max="50" value="10" id="aliquot_number" oninput="aliquot()">
@@ -188,7 +188,7 @@ function display_in_collats(){
         <button class="return_button" onclick='display_return()'>戻る</button>
         <h2>コラッツ予想</h2>
         <div class="side_parent">
-            <div class="side_content" style="max-width: 450px; max-height: 225px;">
+            <div class="side_content" style="">
                     <canvas id="collatsChart" style="background-color: #fff;"></canvas>
                     <div id="collats_list"></div>
                     初項の値：<input type="number" min="1" value="27" id="collats_number" oninput="collats()">
@@ -207,7 +207,7 @@ function display_in_pai(){
     <button class="return_button" onclick='display_return()'>戻る</button>
     <h2>ぱいこね変換</h2>
     <div class="side_parent">
-        <div class="side_content" style="max-width: 450px; max-height: 225px;">
+        <div class="side_content" style="">
             <canvas id="piCanvas" width="400" height="30"></canvas> 
             <div id="data"></div>
             初期値：<input type="number" step="0.000001" value="20" id="pi_number" oninput="pi()"><br>
@@ -231,7 +231,7 @@ function display_in_trigonometric_circle(){
     <button class="return_button" onclick='display_return()'>戻る</button>
     <h2>三角関数による円の描画</h2>
     <div class="side_parent">
-        <div class="side_content" style="max-width: 450px; max-height: 225px;">
+        <div class="side_content" style="">
             <canvas id="trigonometric-cricle_Canvas" width="500" height="500"></canvas> 
             <div id="data"></div>
             角度：<input type="range" step="1" value="30" min="0" max="360" id="trigonometric-circle_number" oninput="trigonometric_circle()"><br>

@@ -48,7 +48,7 @@ mark{
 }
 .list_table{
     overflow-x: scroll;
-    border: 1px solid #aaa;
+    /* border: 1px solid #aaa; */
     padding:3px;
 }
 table{
@@ -58,7 +58,8 @@ table{
     height:1.5em;
     border-collapse: collapse;
     white-space: nowrap;
-    border:solid 1px #888;
+    border:solid 3px #09f;
+    border-radius: 10px;
 }td,th{
     padding:5px;
 }
@@ -83,12 +84,26 @@ table{
     content: "<";
 }
 /*横並び*/
+
 .side_parent{
     display: flex;
     flex-wrap: wrap;
 }.side_content{
     margin: 10px;
-    width: 50%;
+    max-width: 48vw;
+}
+
+@media screen and (max-width: 900px) {
+    .side_parent{
+        display: block;
+        flex-wrap: wrap;
+    }
+}
+@media screen and (max-width: 900px) {
+    .side_content{
+    margin: 10px;
+    max-width: 90vw;
+    }
 }
 .page_button{
     background-color: #00ff00;
@@ -104,4 +119,22 @@ table{
     display: block;
 }.page_button:hover{
     background-color: #00c900;
+}
+input[type=text], input[type=number]{
+    border-radius: 5px;
+    border: 2px solid #09f;
+    height: 2em;
+    margin-block: 8px;
+}
+label{
+    min-height: 2em;
+}
+button{
+    background-color: #adf;
+    height: 2.5em;
+    border: 2.5px solid #09f;
+    border-radius: 5px;
+    padding-inline: 15px;
+    display: block;
+    margin-block: 10px;
 }
