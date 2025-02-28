@@ -209,7 +209,7 @@ function display_in_pai(){
     <div class="side_parent">
         <div class="side_content" style="">
             <canvas id="piCanvas" width="400" height="30"></canvas> 
-            <div id="data"></div>
+            <div>パイの大きさ : 400(-200~+200)<br><mark>粒子の位置 : <span id="data"></span></mark></div>
             初期値：<input type="number" step="0.000001" value="20" id="pi_number" oninput="pi()"><br>
             こねる回数：<input type="number" step="25" value="300" id="loop_number" oninput="pi()"><br>
             <button onclick="pi()">設定</button><br>
@@ -217,7 +217,16 @@ function display_in_pai(){
         <div class="side_content">
             <div>
                 <h3>ぱいこね変換とは</h3>
-
+                パイをこねるような動作を用いて「カオス」を表す方法です。<br>
+                数学の「カオス」とは初期値敏感性という<mark>はじめの値が少しでも変わると、結果が大きく変わる</mark>という性質です。<br>
+                この、「ぱいこね変換」では、パイの生地に見立てた数直線上でパイの粒子(図で言うオレンジの線)が初期値とこねる回数によってどのように変化するかを見ることができます。<br>
+                計算方法:<br>
+                <ol>
+                    <li>半分におる : 正の数の符号を負にする　数直線の0を折り目として正の数を負の数に持っていく。</li>
+                    <li>中心に持ってくる : 折った数直線の真ん中を0として、真ん中より大きい数を正の数に、真ん中より小さい数を負の数に変換する。</li>
+                    <li>伸ばす : 数直線の長さを2倍にする</li>
+                    <li>上の1~3をこねる回数だけ繰り返す</li>
+                </ol>
             </div>
         </div>
     </div>
