@@ -367,3 +367,53 @@ function trigonometric_circle(){
     ctx.fillRect(cs.width/2+cos, cs.height/2+sin, 5, 5);
 
 }
+function integral(){
+    let integral_number = Number(document.querySelector("#integral_number").value);
+
+    let cs = document.getElementById('integral_Canvas')
+    let ctx = cs.getContext('2d')
+    ctx.save();
+    ctx.clearRect(0, 0, cs.width, cs.height);
+    ctx.translate(cs.width/2, cs.height-10);
+    // 横線を引く
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(-cs.width, 0);
+    ctx.lineTo(cs.width, 0);
+    ctx.closePath();
+    ctx.stroke();
+    //縦線ひく
+    ctx.beginPath()
+    ctx.moveTo(0, -cs.height);
+    ctx.lineTo(0, cs.height);
+    ctx.closePath();
+    ctx.stroke();
+
+    let dot_number = 150 /**放物線の最大幅 */
+    for(let x=-dot_number; x<dot_number; x = x+0.6){
+        ctx.fillRect(0 - x, 0 - (x**2)*(1/100), 1, 1);
+        // ctx.lineTo(0 - x, 0 - x**2);
+        // console.log("x:"+x+" y:"+x**2);
+    }
+    integral_width = dot_number / integral_number /**長方形の横幅 */
+    ctx.beginPath();
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#00f';
+    let sum_area = 0;
+    for(let n=0;n<integral_number;n++){
+        let left_bottom = integral_width * n;
+        let left_top = (left_bottom**2)*(1/100);
+        let right_bottom = left_bottom + integral_width;
+        let right_top = (right_bottom**2)*(1/100)
+
+        let width = integral_width;
+        let height = right_top /** or left_top */
+        ctx.strokeRect(right_bottom, 0, -width, -height);
+        sum_area += (width * height);
+        console.log(right_bottom,0,-width,-height);
+
+    }
+    document.querySelector("#data").innerHTML = "<span>長方形の個数："+integral_number+"個</span><br><span>長方形の横幅："+integral_width+"</span><br><span>計算した面積："+sum_area+"</span><br>"
+    ctx.restore();
+}

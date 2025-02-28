@@ -257,5 +257,24 @@ display_in.style = "left:0;"
 trigonometric_circle();
 
 }
-
+function display_in_integral(){
+    display_in.innerHTML = `
+    <button class="return_button" onclick='display_return()'>戻る</button>
+    <h2>積分の仕組み</h2>
+    <div class="side_parent">
+        <div class="side_content" style="">
+            <canvas id="integral_Canvas" width="500" height="250"></canvas>
+            <div id="data"></div>
+            長方形の個数：<input type="range" step="1" value="10" min="0" max="100" id="integral_number" oninput="integral()"><br>
+            <button onclick="integral()">設定</button><br>
+        </div>
+        <div class="side_content">
+            <div>
+            </div>
+        </div>
+    </div>
+    `;
+    display_in.style = "left:0;"
+    integral()
+}
 /***************************************math*****************************************/
