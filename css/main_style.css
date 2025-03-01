@@ -96,8 +96,6 @@ table{
         display: block;
         flex-wrap: wrap;
     }
-}
-@media screen and (max-width: 900px) {
     .side_content{
     margin: 10px;
     max-width: 90vw;
@@ -142,4 +140,12 @@ h1, h2, h3{
     border-bottom: 2px solid #7cf;
     width: fit-content;
     padding-right: 20px;
+}
+canvas{
+    width: 500px;
+}
+@media screen and (max-width: 900px) {
+    .canvas{
+        width: 80vw;
+    }
 }

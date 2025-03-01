@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <title>国語</title>
+        <title>理科 | 目で見る教科書</title>
         <link rel="stylesheet" href="./css/main_style.css">
         <link rel="stylesheet" href="./css/hamburger.css">
         <link rel="stylesheet" href="./css/audio_player.css">
         <link rel="stylesheet" href="./css/todo.css">
-        <link rel="stylesheet" href="./css/japanese.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+        <script src="./js/Chart.2.7.2.js"></script>
     </head>
     <body>
+        <h1 class="title_h1">理科　目で見る教科書</h1>
 
         <div class="nav">
             <input type="checkbox" id="nav_input" class="drawer_hidden">
@@ -28,15 +29,22 @@
             </div>
         </div>
 
-        <input id="japanese_drawer_input" type="checkbox" class="drawer_hidden">
-        <label for="japanese_drawer_input" class="div_content" onclick="display_in_bunsetu()">
-            <h2>文節</h2>
-            <p></p>
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_movement()">
+            <h2>加速度と落下</h2>
+            <p>加速度や落下についての実験することができます。</p>
+        </label>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_movement1()">
+            <h2>角度と落下</h2>
+            <p>ボールが遠くに飛ぶ角度などの実験することができます。</p>
         </label>
 
         <script type="text/javascript" src="./js/main_script.js"></script>
         <script type="text/javascript" src="./js/audio_player.js"></script>
-        <script type="text/javascript" src="./js/japanese.js"></script>
+        <script type="text/javascript" src="./js/science_display.js"></script>
+        <script type="text/javascript" src="./js/science.js"></script>
         <script type="text/javascript" src="./js/todo.js"></script>
     </body>
 </html>
