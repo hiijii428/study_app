@@ -326,16 +326,17 @@ function trigonometric(){
 
 }
 function trigonometric_circle(){
-    let input_number = document.getElementById("trigonometric-circle_number").value;
-    number = (input_number-90)*(Math.PI/180); //ラジアンに変換
-    let sin = Math.sin(number)*200
-    let cos = Math.cos(number)*200
-    let data = "角度："+input_number+"°<br>座標："+"( "+cos+" ,  "+sin+" )";
-    document.getElementById("data").innerHTML = data;
-//    console.log("("+cos+","+sin+")")
-    // 変数定義
     let cs = document.getElementById('trigonometric-cricle_Canvas')
     let ctx = cs.getContext('2d')
+
+    let input_number = document.getElementById("trigonometric-circle_number").value;
+    number = (input_number-90)*(Math.PI/180); //ラジアンに変換
+    let r_size = Math.min(cs.height,cs.width)/2;//半径
+    console.log(r_size)
+    let sin = Math.sin(number)*r_size
+    let cos = Math.cos(number)*r_size
+    let data = "角度："+input_number+"°<br>座標："+"( "+cos+" ,  "+sin+" )";
+    document.getElementById("data").innerHTML = data;
 
     ctx.clearRect(0, 0, cs.width, cs.height);
     // 横線を引く
