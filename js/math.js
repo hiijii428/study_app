@@ -418,3 +418,36 @@ function integral(){
     document.querySelector("#data").innerHTML = "<span>長方形の個数："+integral_number+"個</span><br><span>長方形の横幅："+integral_width+"</span><br><span>計算した面積："+sum_area+"</span><br>"
     ctx.restore();
 }
+function ngon(){
+    let ngon_number = Number(document.querySelector("#ngon_number").value);
+    console.log(ngon_number);
+
+    let cs = document.getElementById('ngon_Canvas')
+    let ctx = cs.getContext('2d')
+    ctx.save();
+    ctx.clearRect(0, 0, cs.width, cs.height);
+    ctx.strokeStyle = '#0f0';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+
+    let r = Math.min(cs.height/2, cs.width/2)*0.95
+    let deg = ((360/ngon_number)*(1-2)+90)*(Math.PI/180)
+    ctx.moveTo( Math.cos(deg)*r+cs.width/2 , Math.sin(deg)*r+cs.height/2 );
+
+    let dec = ngon_number.toString().split('.')[1]
+    if(dec){dec=dec.length}else{dec=ngon_number}
+    let n = 10**Number(dec);/*分数の分母にする*/
+    function gcd (x, y){if(x % y){return gcd(y, x % y)}else{return y}}/*最大公約数を求める */
+    let loop_number = ngon_number*n/gcd(n,ngon_number*n)
+    console.log(loop_number);
+    document.querySelector("#data").innerHTML = "<span>角の数："+loop_number+"</span>"
+
+    for(let m=0;m<loop_number+1;m++){
+        let deg = ((360/ngon_number)*(m-2)+90)*(Math.PI/180)
+        ctx.lineTo(Math.cos(deg)*r+cs.width/2 , Math.sin(deg)*r+cs.height/2 );
+    }
+
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+}

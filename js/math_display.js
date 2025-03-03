@@ -321,4 +321,31 @@ function display_in_integral(){
     canvas_size_set()
     integral()
 }
+function display_in_ngon(){
+    display_in.innerHTML = `
+    <button class="return_button" onclick='display_return()'>戻る</button>
+    <h2>「有限小数」角形はどんな形か？</h2>
+    <div class="side_parent">
+        <div class="side_content" style="">
+            <canvas id="ngon_Canvas" width="250" height="250"></canvas>
+            <div id="data"></div>
+            角の個数：<input type="number" value="2.5" min="1" step="0.01" id="ngon_number" oninput="ngon()"><br>
+            <button onclick="ngon()">設定</button><br>
+        </div>
+        <div class="side_content">
+            <div>
+            <h3>「有限小数」角形がどんな形か</h3>
+            有限小数とは、例えば2.5などの数で、分数で表すことのできる数のうち、有限の値にとどまる小数のことです。<br>
+            普通の多角形は整数ですが、ここでは、有限小数の多角形を考えてみましょう。<br>
+            やり方は普通の多角形と同じです。<br>
+            一つの内角の大きさを求め、辺を引っ張っていくという作業です。ただ、整数多角形ではないので、辺が交差することを認めて描画します。<br>
+            （コンピューターが行っている計算は三角関数を用いた描画です。）
+            </div>
+        </div>
+    </div>
+    `;
+    display_in.style = "left:0;"
+    canvas_size_set()
+    ngon()
+}
 /***************************************math*****************************************/
