@@ -1,4 +1,4 @@
-function movement(x = null ,y = null){
+function movement(x = null ,y = null){/*上投げと自由落下*/
     let cs = document.querySelector("#movement_Canvas");
     if(x===null) x=cs.width/2;
     if(y===null) y=cs.height/2;
@@ -57,7 +57,7 @@ function movement(x = null ,y = null){
     requestAnimationFrame(move);
 
 }
-function movement1(x = null ,y = null){
+function movement1(x = null ,y = null){/*角度と落下距離*/
     let cs = document.querySelector("#movement_Canvas");
     if(x===null) x=0;
     if(y===null) y=cs.height-10;
@@ -120,4 +120,43 @@ function movement1(x = null ,y = null){
     }
     requestAnimationFrame(move);
 
+}
+
+function quantum_observation(){/*観測*/
+    let elem_label_list = {".black90_click":0.9,".black70_click":0.7,".white70_click":0.3,".white90_click":0.1}
+    for(let elem_label in elem_label_list){
+        let elem_list = document.querySelectorAll(elem_label+">div")
+        for(elem of elem_list){
+            console.log("観測！");
+            if(Math.random() < elem_label_list[elem_label]){
+                elem.style = "background-color:black";
+            }else{
+                elem.style = "background-color:white";
+            }
+        }
+    }
+}
+function quantum_observation_false(){/*観測から戻る*/
+    for(e of document.querySelectorAll('.bored>div>div>div')){e.style = null;}
+}
+function quantum_click(elm){/*クリック*/
+    /* black90 -> white90 -> black70 -> white70 -> black90 */
+    switch(document.querySelector("#order").className){
+        case "black90":
+            elm.classList.add("black90_click");
+            document.querySelector("#order").className = "white90"
+            break
+        case "white90":
+            elm.classList.add("white90_click");
+            document.querySelector("#order").className = "black70"
+            break
+        case "black70":
+            elm.classList.add("black70_click");
+            document.querySelector("#order").className = "white70"
+            break
+        case "white70":
+            elm.classList.add("white70_click");
+            document.querySelector("#order").className = "black90"
+            break
+    }
 }
