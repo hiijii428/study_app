@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>プログラミング | 目で見る教科書</title>
+        <link rel="stylesheet" href="./css/main_style.css">
+        <link rel="stylesheet" href="./css/hamburger.css">
+        <link rel="stylesheet" href="./css/audio_player.css">
+        <link rel="stylesheet" href="./css/todo.css">
+
+        <!-- <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.4/core.css" />
+        <script type="module" src="https://pyscript.net/releases/2025.2.4/core.js"></script> -->
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+        <script src="./js/Chart.2.7.2.js"></script>
+    </head>
+    <body>
+        <h1 class="title_h1">プログラミング　目で見る教科書</h1>
+
+        <div class="nav">
+            <input type="checkbox" id="nav_input" class="drawer_hidden">
+            <label for="nav_input" class="drawer_open" style="top: 110px;">nav</label>
+            <div class="nav_div">
+                <h3>メニュー</h3>
+                <ul>
+                    <li><a href="./index.html" class="menu_link">トップ</a></li>
+                    <li><a href="./japanese.html" class="menu_link">国語科</a></li>
+                    <li><a href="./math.html" class="menu_link">数学科</a></li>
+                    <li><a href="./society.html" class="menu_link">社会科</a></li>
+                    <li><a href="./science.html" class="menu_link">理科</a></li>
+                    <li><a href="./todo.html" class="menu_link">TODOリスト</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_html()">
+            <h2>WEBページ - HTML</h2>
+            <p>HTMLについて知ることができます。</p>
+        </label>
+<!--
+        <input id="math_drawer_input" type="checkbox" class="drawer_hidden">
+        <label for="math_drawer_input" class="div_content" onclick="display_in_binary_number()">
+            <h2>二進数</h2>
+            <p>2進数について知ることができます。</p>
+        </label> -->
+
+        <script type="text/javascript" src="./js/main_script.js"></script>
+        <script type="text/javascript" src="./js/audio_player.js"></script>
+        <script type="text/javascript" src="./js/programs_display.js"></script>
+        <script type="text/javascript" src="./js/programs.js"></script>
+        <script type="text/javascript" src="./js/todo.js"></script>
+    </body>
+</html>

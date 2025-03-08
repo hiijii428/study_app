@@ -237,7 +237,7 @@ function display_in_pai(){
         <div class="side_content" style="">
             <canvas id="piCanvas" width="400" height="30"></canvas>
             <div>パイの大きさ : 400(-200~+200)<br><mark>粒子の位置 : <span id="data"></span></mark></div>
-            初期値：<input type="number" step="0.0000000000000000000000000000001" value="20.00000001" id="pi_number" oninput=""><br>
+            初期値：<input type="number" step="0.0000000000000000000000000000001" value="20.00000001" id="pi_number" oninput="pi()"><br>
             こねる回数：<input type="number" step="25" value="300" id="loop_number" oninput="pi()"><br>
             <button onclick="pi()">設定</button><br>
         </div>
@@ -327,7 +327,7 @@ function display_in_ngon(){
     <h2>「有限小数」角形はどんな形か？</h2>
     <div class="side_parent">
         <div class="side_content" style="">
-            <canvas id="ngon_Canvas" width="250" height="250"></canvas>
+            <canvas id="ngon_Canvas" width="250" height="250" style="transform:rotateZ(180deg)"></canvas>
             <div id="data"></div>
             角の個数：<input type="number" value="2.5" min="1" step="0.01" id="ngon_number" oninput="ngon()"><br>
             <button onclick="ngon()">設定</button><br>

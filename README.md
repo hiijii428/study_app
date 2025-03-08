@@ -55,3 +55,4 @@
 
 ---
 #### **Copyright © 2025 Hiijii**
+誰でも使用できますが、使用する際は、[フォーム](https://hiijii428.github.io/blog/form.html)に一言知らせてくれたら幸いです。
