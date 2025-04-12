@@ -451,3 +451,97 @@ function ngon(){
     ctx.stroke();
     ctx.restore();
 }
+function suisen(click) {
+    if (!click) click = { "1": { "x": 150, "y": 280 }, "2": { "x": 240, "y": 280 } };
+//    else if (!click["2"]) click = { "1": { "x": 150, "y": 280 }, "2": { "x": 280, "y": 150 } };
+    console.log(click["1"]["x"], click["1"]["y"]);
+    console.log(click["2"]["x"], click["2"]["y"]);
+
+    const canvas = document.getElementById('suisen_Canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 円1
+    const c1 = { x: click["1"]["x"], y: click["1"]["y"], r: (click["1"]["x"]-click["2"]["x"])*1.1 };
+    // 円2
+    const c2 = { x: click["2"]["x"], y: click["2"]["y"], r: (click["1"]["x"]-click["2"]["x"])*1.1 };
+
+    function drawCircle(c) {
+        return new Promise(function (resolve, reject) {
+            ctx.beginPath();
+            ctx.strokeStyle = "#444";
+
+            let i=0;
+            ctx.fillStyle = "#f00";
+            ctx.arc(c.x, c.y, 7, 0, 2 * Math.PI);
+            ctx.fill(); // 軌跡の範囲を塗りつぶす
+
+            const function1 = () => {
+                ctx.fillStyle = "#444";
+                number = i * (Math.PI / 180); //ラジアンに変換
+                let sin = Math.sin(number) * c.r +c.y
+                let cos = Math.cos(number) * c.r + c.x
+                ctx.fillRect(cos, sin, 1, 1);
+
+                i+=1;
+                if (i <= 360) {
+                    animation_id = requestAnimationFrame(function1);
+                } else {
+                    cancelAnimationFrame(animation_id);
+                    done = true;
+                    resolve();
+
+                    ctx.beginPath();
+                    ctx.fillStyle = "#00f";
+                    ctx.arc(c.x, c.y, 7, 0, 2 * Math.PI);
+                    ctx.fill(); // 軌跡の範囲を塗りつぶす
+                    ctx.closePath();
+
+                }
+            }
+            requestAnimationFrame(function1);
+            ctx.closePath();
+        });
+    }
+
+    function drawIntersectionLine() {
+        // 幾何的に交点を求める
+        const dx = c2.x - c1.x; //高さの差
+        const dy = c2.y - c1.y; //近さ
+        const d = Math.hypot(dx, dy);//dx^2+dy^2
+
+        const a = (c1.r**2 - c2.r**2 + d**2) / (2 * d);
+        const h = Math.sqrt(c1.r**2 - a**2);// √
+
+        const xm = c1.x + a * dx / d;
+        const ym = c1.y + a * dy / d;
+
+        const rx = -dy * (h / d);
+        const ry = dx * (h / d);
+
+        const xi1 = xm + rx;
+        const yi1 = ym + ry;
+        const xi2 = xm - rx;
+        const yi2 = ym - ry;
+
+        ctx.beginPath();
+        ctx.strokeStyle = "red";
+        ctx.moveTo(xi1, yi1);
+        ctx.lineTo(xi2, yi2);
+        ctx.stroke();
+    }
+
+    drawCircle(c1).then(()=>{
+        drawCircle(c2).then(()=>{
+            drawIntersectionLine();
+        })
+    });
+
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.moveTo(c1.x, c1.y);
+    ctx.lineTo(c2.x, c2.y);
+    ctx.stroke();
+
+
+}

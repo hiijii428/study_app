@@ -348,4 +348,74 @@ function display_in_ngon(){
     canvas_size_set()
     ngon()
 }
+function display_in_suisen() {
+    display_in.innerHTML = `
+    <button class="return_button" onclick='display_return()'>戻る</button>
+    <h2>垂直二等分線の引き方</h2>
+    <div class="side_parent">
+        <div class="side_content" style="">
+            下のキャンバスをに線分を引くには、始点と終点をクリック(タップ)してください。<br>
+            注意：線分が長いと見切れます。<br>
+            描いている円の中心を赤く、描き終わったら青くしています。
+            <canvas id="suisen_Canvas" width="500" height="500" style="border:1px solid #777;border-radius:5px;"></canvas>
+            <div id="data"></div>
+            <button onclick="suisen()">設定</button><br>
+        </div>
+        <div class="side_content">
+            <div>
+            <h2>作図に欠かせない垂直二等分線の引き方</h2>
+            垂直二等分線とは、線分を二等分する垂線の事です。<br>
+            例えば、ABの線分があるとき、ABの垂直二等分線を引き、交点をMとすると、AM=MBとなります。<br>
+            これを使うと、ABの中点を求めることができます。<br>
+            <h3>作図の方法</h3>
+            垂直二等分線を引く線分を線分ABとする。
+            <ol>
+                <li>ABの両端から、ABの半分より長い半径の円を描く。（２つの円の半径は等しく）</li>
+                <li>2つの円の交点(２つ)を結び、直線を作る。</li>
+                <li>その直線が垂直二等分線になる。</li>
+            </ol>
+            <h3>垂直二等分線の特徴</h3>
+            <ul>
+                <li>ABの中点を求めることができる。</li>
+                <li>ABの長さを求めることができる。</li>
+                <p>
+                ABの長さは、AM+MBとなり、AM=MBなので、AB=2AM (2MBでも可)となります。<br>
+                </p>
+                <li>二等辺三角形を書くことができる</li>
+                <p>
+                垂直二等分線上に点Oを取ると、AO=BOとなります。<br>
+                逆に言えば、2点からの距離が等しくなる点Oは、ABの垂直二等分線上にあるということです。
+                </p>
+
+            </div>
+        </div>
+    </div>
+    `;
+    display_in.style = "left:0;"
+    canvas_size_set()
+    let click = {};
+    document.getElementById('suisen_Canvas').addEventListener("mousedown", (e) => {
+        const rect = e.target.getBoundingClientRect();
+        x = e.clientX - rect.left;
+        y = e.clientY - rect.top;// clientY
+        if (!click["1"]) {
+            click["1"] = { "x": x, "y": y };
+        } else {
+            if (click["2"]) {
+                click = {}
+                click["1"] = { "x": x, "y": y };
+            } else {
+            click["2"] = { "x": x, "y": y };
+            }
+        }
+        suisen(click);
+        /**
+         * click = {
+         *  "1": { "x": x, "y": y },
+         *  "2": { "x": x, "y": y }
+         * }
+         */
+    });
+    suisen()
+}
 /***************************************math*****************************************/

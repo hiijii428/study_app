@@ -10,12 +10,41 @@
         <!-- <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.4/core.css" />
         <script type="module" src="https://pyscript.net/releases/2025.2.4/core.js"></script> -->
 
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width,initial-scale=1.0">
+                <!-- PyScript CSS -->
+                <link rel="stylesheet" href="https://pyscript.net/releases/2024.11.1/core.css">
+                <!-- PyScriptの読み込み -->
+                <script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
+                <!-- Pythonが読み込まれるまでLoadingを表示 -->
+                <style>
+                    #loading {
+                        outline: none;
+                        border: none;
+                        background: transparent
+                    }
+                </style>
+                <script type="module">
+                    const loading = document.getElementById('loading');
+                    addEventListener('py:ready', () => loading.close());
+                    loading.showModal();
+                </script>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
         <script src="./js/Chart.2.7.2.js"></script>
     </head>
     <body>
         <h1 class="title_h1">プログラミング　目で見る教科書</h1>
+
+                <dialog id="loading">
+                    <h1 style="border:none;">Loading the python scripts ...</h1>
+                </dialog>
+                <py-script>
+                    print("Hello, PyScript!")
+                </py-script>
+
+
 
         <div class="nav">
             <input type="checkbox" id="nav_input" class="drawer_hidden">
